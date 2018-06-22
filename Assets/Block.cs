@@ -5,7 +5,11 @@ public class Block : MonoBehaviour {
 
     private bool blockbool = false;
 
+    private bool blockbool2 = true;
+
     AudioSource audioSource;
+
+    private float audiotime;
 
     // Use this for initialization
     void Start () {
@@ -17,27 +21,32 @@ public class Block : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
- 
-
-        if (blockbool == true)
+        if (blockbool2==true)
         {
 
-            audioSource.Play();
+            if (blockbool == true)
+            {
 
-            blockbool = false;
+                  blockbool2 = false;
+
+    blockbool = false;
+
+                    audioSource.Play();
+
+
+            }
 
         }
-    
 
 	}
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "Ground"||collision.gameObject.tag=="Block")
+        if(collision.gameObject.tag=="Block")
         {
 
-            blockbool=true;
+            blockbool = true;
 
         }
 
